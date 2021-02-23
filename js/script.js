@@ -49,18 +49,57 @@ $(document).ready(function () {
             function () {
                 $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business').stop().addClass('active');
                 $('.hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+            },
+            function() {
+                $(".hd_menu_all .menu_sub .all_contentsub ul.sub_business").hover(
+                    function () {
+                        $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business').stop().addClass('active');
+                    }, function() {
+                        $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+                    }
+                );
+                $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').delay(300).queue(function(next){
+                    $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+                    next();
+                }); 
             }
         );
         $(".hd_menu_all .menu_main ul li:nth-child(2)").hover(
             function () {
                 $('.hd_menu_all .menu_sub .all_contentsub ul.sub_about').stop().addClass('active');
                 $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+            },
+            function() {
+                $(".hd_menu_all .menu_sub .all_contentsub ul.sub_about").hover(
+                    function () {
+                        $('.hd_menu_all .menu_sub .all_contentsub ul.sub_about').stop().addClass('active');
+                    }, function() {
+                        $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+                    }
+                );
+                $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').delay(300).queue(function(next){
+                    $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+                    next();
+                }); 
             }
         );
         $(".hd_menu_all .menu_main ul li:nth-child(3)").hover(
             function () {
                 $('.hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().addClass('active');
                 $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about').stop().removeClass('active');
+            }, 
+            function() {
+                $(".hd_menu_all .menu_sub .all_contentsub ul.sub_recruit").hover(
+                    function () {
+                        $('.hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().addClass('active');
+                    }, function() {
+                        $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+                    }
+                );
+                $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').delay(300).queue(function(next){
+                    $('.hd_menu_all .menu_sub .all_contentsub ul.sub_business, .hd_menu_all .menu_sub .all_contentsub ul.sub_about, .hd_menu_all .menu_sub .all_contentsub ul.sub_recruit').stop().removeClass('active');
+                    next();
+                }); 
             }
         );
 

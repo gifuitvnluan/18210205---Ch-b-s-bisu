@@ -119,7 +119,7 @@ $dataArr = (!empty($getFormatDataArr)) ? $getFormatDataArr : exit('データが�
                                 <li><a href="./interview.html">先輩メッセージ</a></li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="./contact.html">お問い合わせ</a>
                         </li>
                     </ul>

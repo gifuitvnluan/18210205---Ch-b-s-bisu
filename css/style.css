@@ -219,7 +219,7 @@ br {
 }
 
 #page_banner .all_banners .all_content .banner_content .img {
-	margin-top: 25px;
+	margin-top: 23px;
 }
 
 
@@ -1726,6 +1726,7 @@ header {
 	font-size: 1.125rem;
 	line-height: 155%;
 	color: #B68018;
+	font-weight: 400;
 }
 
 #business01_03 .all_item_2 .item .all_content .div_add_txt2 {
@@ -1791,8 +1792,8 @@ header {
 	-moz-border-radius: 10px;
 	-ms-border-radius: 10px;
 	-o-border-radius: 10px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
 	height: 85px;
 	display: flex;
 	align-items: center;
@@ -2747,6 +2748,7 @@ header {
 	font-size: 2.5rem;
 	text-shadow: rgb(237, 106, 2) 2px 0px 0px, rgb(237, 106, 2) 1.75517px 0.958851px 0px, rgb(237, 106, 2) 1.0806px 1.68294px 0px, rgb(237, 106, 2) 0.141474px 1.99499px 0px, rgb(237, 106, 2) -0.832294px 1.81859px 0px, rgb(237, 106, 2) -1.60229px 1.19694px 0px, rgb(237, 106, 2) -1.97998px 0.28224px 0px, rgb(237, 106, 2) -1.87291px -0.701566px 0px, rgb(237, 106, 2) -1.30729px -1.5136px 0px, rgb(237, 106, 2) -0.421592px -1.95506px 0px, rgb(237, 106, 2) 0.567324px -1.91785px 0px, rgb(237, 106, 2) 1.41734px -1.41108px 0px, rgb(237, 106, 2) 1.92034px -0.558831px 0px;
 	color: #FFFFFF;
+	left: calc(50% - 1.25rem);
 	top: 42px;
 }
 
@@ -2949,6 +2951,7 @@ header {
 	border: 0;
 	resize: none;
 	padding: 10px 10px;
+	overflow: auto;
 }
 
 #contact_content01 .div_table form table tr td input[type="submit"] {

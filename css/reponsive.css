@@ -454,6 +454,7 @@
     .inter_div_content02 .all_item .item .num {
         top: 3.443vw;
         font-size: 3.279vw;
+        left: calc(50% - 1.6395rem);
     }
 
     .inter_div_content02 .all_item .item .txt {
@@ -561,6 +562,7 @@
     .inter_div_content02 .all_item .item .num {
         top: 35px;
         font-size: 2.8rem;
+        left: calc(50% - 1.4rem);
     }
 
     .inter_div_content02 .all_item .item .txt {
@@ -1762,6 +1764,7 @@
     .inter_div_content02 .all_item .item .num {
         top: 25px;
         font-size: 2rem;
+        left: calc(50% - 1rem);
     }
 
     .inter_div_content02 .all_item .item .txt {
