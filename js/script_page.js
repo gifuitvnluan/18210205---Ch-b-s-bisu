@@ -3,14 +3,14 @@ $(document).ready(function () {
         if ($(document).width() > 767) {
             $('#page_banner').css('margin-top', $('.hd_menu_all .menu_main').outerHeight() + 'px');
         } else {
-            $('#page_banner').css('margin-top', $('.menu_sp').outerHeight() + 'px');
+            $('#page_banner').css('margin-top', $('.menu_sp .btn_menu').outerHeight() + 'px');
         }
 
         $( window ).scroll(function() {
             if ($(document).width() > 767) {
                 $('#page_banner').css('margin-top', $('.hd_menu_all .menu_main').outerHeight() + 'px');
             } else {
-                $('#page_banner').css('margin-top', $('.menu_sp').outerHeight() + 'px');
+                $('#page_banner').css('margin-top', $('.menu_sp .btn_menu').outerHeight() + 'px');
             }
         });
 

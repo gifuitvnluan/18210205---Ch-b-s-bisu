@@ -156,7 +156,7 @@
     </section>
     <!-- End #top_content01 -->
 
-    <section id="top_business"> 
+    <section id="top_business">
         <div class="cont">
             <h3 class="title_style01">
                 <span class="title01">
@@ -187,7 +187,7 @@
     </section>
     <!-- End #top_business -->
 
-    <section id="top_news"> 
+    <section id="top_news">
         <div class="cont">
             <h3 class="title_style01 cl02">
                 <span class="title01">
@@ -197,31 +197,8 @@
                     新着情報
                 </span>
             </h3>
-            <div class="all_news">
-                <a class="item_news hv-o" href="#">
-                    <p class="txt_cate">
-                        お知らせ
-                    </p>
-                    <p class="txt_date">
-                        2018.00.00
-                    </p>
-                    <p class="txt_title">
-                        □□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-                    </p>
-                </a>
-                <a class="item_news hv-o" href="#">
-                    <p class="txt_cate">
-                        採用情報
-                    </p>
-                    <p class="txt_date">
-                        2018.00.00
-                    </p>
-                    <p class="txt_title">
-                        □□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-                    </p>
-                </a>
-            </div>
-            <a class="btn_news hv-o" href="#">
+            <div class="all_news"></div>
+            <a class="btn_news hv-o" href="./news-list.php">
                 All NEWS
             </a>
         </div>
@@ -248,7 +225,7 @@
                             食に関わる仕事だから、<br>社員の健康を守りたい。
                         </div>
                         <div class="txt">
-                            社員の健康を守るため、<br>様々な取組を行っています。  
+                            社員の健康を守るため、<br>様々な取組を行っています。
                         </div>
                     </div>
                     <a class="btn_style01 hv-o" href="./about.html">
@@ -360,6 +337,13 @@
     <script src="./js/slick.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/check_browser.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get("./news.php", {}, function (data) {
+                $(".all_news").html(data);
+            });
+        });
+    </script>
 </body>
 
 </html>

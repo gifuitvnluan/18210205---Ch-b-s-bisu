@@ -1,29 +1,45 @@
+<?php //▼▼ 既存ページヘ埋め込み時はまるっとコピペ下さい （この行も含みページ最上部に）※.phpでかつUTF-8のページのみ可▼▼
+//※逆にこのページに対して既存のページのhtmlを記述する形でももちろんOKです。
+//----------------------------------------------------------------------
+// 詳細ページ（ポップアップと兼用）
+// 設定ファイルの読み込みとページ独自設定
+//----------------------------------------------------------------------
+include_once("./pkobo_news/admin/include/config.php");//（必要に応じてパスは適宜変更下さい）
+$img_updir = './pkobo_news/upload';//画像保存パス（必要に応じてパスは適宜変更下さい）
+
+$id = (!empty($_GET['id'])) ? h($_GET['id']) : exit('パラメータがありません');
+$getFormatDataArr = getLines2DspData($file_path,$img_updir,$config,$id);
+$dataArr = (!empty($getFormatDataArr)) ? $getFormatDataArr : exit('データが存在しません');
+//----------------------------------------------------------------------
+// 設定ファイルの読み込みとページ独自設定
+//----------------------------------------------------------------------
+//▲▲ コピペここまで ▲▲（この行も含む）?>
+
 <!doctype html>
 <html lang="ja">
-
+   
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone=no">
-    <title>プライバシーポリシー | 厨房サービス</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/fav-ico.png" type="image/x-icon" />
-    <!-- End favicon -->
-    <!-- Css reset -->
-    <link rel="stylesheet" type="text/css" href="./css/nomalize.css">
-    <link rel="stylesheet" type="text/css" href="./css/library.css">
-    <link rel="stylesheet" type="text/css" href="./css/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="./css/slick.css">
-    <link rel="stylesheet" type="text/css" href="./css/aos.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/reponsive.css">
-    <!-- End css reset -->
-
-</head>
-
-<body>
-    <!-- Header -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="format-detection" content="telephone=no">
+      <title>新着情報 | 厨房サービス</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="./img/fav-ico.png" type="image/x-icon" />
+      <!-- End favicon -->
+      <!-- Css reset -->
+      <link rel="stylesheet" type="text/css" href="./css/nomalize.css">
+      <link rel="stylesheet" type="text/css" href="./css/library.css">
+      <link rel="stylesheet" type="text/css" href="./css/slick-theme.css">
+      <link rel="stylesheet" type="text/css" href="./css/slick.css">
+      <link rel="stylesheet" type="text/css" href="./css/aos.css">
+      <link rel="stylesheet" type="text/css" href="./css/style.css">
+      <link rel="stylesheet" type="text/css" href="./css/reponsive.css">
+      <!-- End css reset -->
+    
+   </head>
+   <body>
+     <!-- Header -->
     <header>
         <div class="hd_all">
             <div class="hd_logo">
@@ -103,7 +119,7 @@
                                 <li><a href="./interview.html">先輩メッセージ</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="./contact.html">お問い合わせ</a>
                         </li>
                     </ul>
@@ -112,8 +128,6 @@
         </div>
     </header>
     <!-- End header -->
-
-    <!-- Content -->
     <section id="page_banner">
         <div class="all_banners">
             <div class="img_banner" style="background-image: url(./img/page_banner1.jpeg)"></div>
@@ -122,10 +136,10 @@
                 <div class="banner_content">
                     <h3 class="title_style01 cl02">
                         <span class="title01">
-                            Privacy Policy
+                           NEWS
                         </span>
                         <span class="title02">
-                            プライバシーポリシー
+                           新着情報
                         </span>
                     </h3>
                     <div class="img">
@@ -137,39 +151,63 @@
     </section>
     <!-- End #page_banner -->
 
-    <section id="privacy_content01">
-        <div class="cont">
-            <div class="txt">
-                <p class="txt01">株式会社厨房サービス（以下「当社」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、全従業員に個人情報保護の重要性の認識と取組みを徹底させることにより、個人情報の保護を推進致します。</p>
-                <strong>個人情報の管理</strong>
-                <p>当社は、お客さまの個人情報を正確かつ最新の状態に保ち、個人情報への不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、セキュリティシステムの維持・管理体制の整備・社員教育の徹底等の必要な措置を講じ、安全対策を実施し個人情報の厳重な管理を行ないます。</p>
-                <strong>個人情報の利用目的</strong>
-                <p>お客さまからお預かりした個人情報は、当社からのご連絡や業務のご案内やご質問に対する回答として、電子メールや資料のご送付に利用いたします。</p>
-                <strong>個人情報の第三者への開示・提供の禁止</strong>
-                <p>当社は、お客さまよりお預かりした個人情報を適切に管理し、次のいずれかに該当する場合を除き、個人情報を第三者に開示いたしません。</p>
-                <p class="p_ul">お客さまの同意がある場合<br>
-                お客さまが希望されるサービスを行なうために当社が業務を委託する業者に対して開示する場合<br>
-                法令に基づき開示することが必要である場合</p>
-                <strong>個人情報の安全対策</strong>
-                <p>当社は、個人情報の正確性及び安全性確保のために、セキュリティに万全の対策を講じています。</p>
-                <strong>ご本人の照会</strong>
-                <p class="p_bot0">お客さまがご本人の個人情報の照会・修正・削除などをご希望される場合には、ご本人であることを確認の上、対応させていただきます。<br>
-                法令、規範の遵守と見直し</p>
-                <p>当社は、保有する個人情報に関して適用される日本の法令、その他規範を遵守するとともに、本ポリシーの内容を適宜見直し、その改善に努めます。</p>
-                <strong>お問い合せ</strong>
-                <p class="p_bot0">当社の個人情報の取扱に関するお問い合せは下記までご連絡ください。<br><br></p>
-                <p class="p_bot0">株式会社厨房サービス</p>
-                <p class="p_bot0">〒478-0053愛知県知多市清水が丘１丁目1407番地</p>
-                <p class="p_bot0">TEL:<a href="tel:0562575400" class="link">0562-57-5400</a> FAX:0562-57-5400</p>
+    <!-- Content -->
+
+         <!-- End Banner -->
+        <section id="newsList">
+            <div class="cont">
+            <div class="bg-lend-top"></div>
+            
+                <div class="div_detail">
+
+                    <!--▼▼埋め込み時はここから以下をコピーして任意の場所に貼り付けてください（html部は自由に編集可）▼▼-->
+
+                    <?php if(!$copyright){echo $warningMesse;exit;}else{ ?>
+
+                    <?php if($config['popupFlag'] == 0){ //ポップアップ表示の場合は表示しない?>
+                 <!-- パンくずナビ（必要に応じて変更、削除下さい） -->
+                    <?php } ?>
+                    <h2><?php echo h(strip_tags($dataArr['title']));?></h2>
+                    <div id="up_ymd"><?php echo h($dataArr['up_ymd']);?></div>
+                    <div id="detail">
+                        <?php
+for($i=0;$i<=$maxCommentCount;$i++){
+	if(!empty($dataArr['comment'][$i]) || !empty($dataArr['upfile_path'][$i])){
+		
+		//アップファイル表示用のタグをセット。 画像の場合はimgタグ、その他の場合はファイルにリンクする（タグ部分は自由に変更可）
+		$upfileTag = '';//初期化
+		if(!empty($dataArr['upfile_path'][$i])){
+			if($dataArr['file_type'][$i] == 'img'){
+				$upfileTag = '<img src="'.$dataArr['upfile_path'][$i].'?'.uniqid().'" />';//画像の場合のタグ
+			}else{
+				$linkText = (isset($extensionListText[$dataArr['extension'][$i]])) ? $extensionListText[$dataArr['extension'][$i]] : 'アップファイル（'.$dataArr['extension'][$i].'）';//リンクテキストをセット
+				$upfileTag = '<a href="'.$dataArr['upfile_path'][$i].'" target="_blank">'.$linkText.'</a>';//画像以外の場合のタグ
+			}
+			$upfileTag = '<div class="detailUpfile">'.$upfileTag.'</div>';
+		}
+?>
+                        <div class="detailText">
+                            <?php echo (!empty($dataArr['comment'][$i])) ? $dataArr['comment'][$i] : '';?></div>
+                        <?php echo $upfileTag;?>
+                        <?php 
+	}
+}
+?>
+                    </div>
+                    <div class="detail_back">
+                        <a href="javascript:history.back()" class="hv-o">&lt;&lt;戻る</a>
+                    </div>
+                    <?php }//著作権表記削除不可?>
+
+                    <!--▲▲埋め込み時　コピーここまで▲▲-->
+
+                </div>
+            
             </div>
-        </div>
-    </section>
-    <!-- End #recruit_content01 -->
-
-    <!-- End content -->
-
-    <!-- Footer -->
-    <footer>
+     
+        </section>
+       <!-- Footer -->
+       <footer>
         <div class="div_backtop"></div>
         <div class="ft_all">
             <div class="ft_bg">
@@ -243,5 +281,4 @@
     <script src="./js/script_page.js"></script>
     <script src="./js/check_browser.js"></script>
 </body>
-
 </html>

@@ -1,29 +1,67 @@
+<?php //▼▼ 既存ページヘ埋め込み時はまるっとコピペ下さい （この行も含みページ最上部に）※.phpでかつUTF-8のページのみ可▼▼
+//※逆にこのページに対して既存のページのhtmlを記述する形でももちろんOKです。
+//----------------------------------------------------------------------
+// ページング付き一覧ページ（投稿がどんなに増えても自動でページングを調整します）
+// 設定ファイルの読み込みとページ独自設定
+//----------------------------------------------------------------------
+include_once("./pkobo_news/admin/include/config.php");//（必要に応じてパスは適宜変更下さい）
+$img_updir = './pkobo_news/upload';//画像保存パス（必要に応じてパスは適宜変更下さい）
+
+/* ▽オプション設定▽ */
+//※1ページあたりの表示件数などは設定ファイルで指定できます（デフォルトは20件）
+
+//本文の抜粋を表示するかどうか（0=しない、1=する）
+$commentDsp = 1;
+
+//本文を抜粋表示する場合の表示文字数 （単位はバイト。全角文字は「2バイト」で1文字となります。また末尾の文字「...」も含みます）
+//※htmlタグは削除されます「0」にすれば全文をhtmlもそのままで表示します。（レイアウトに問題が出る可能性があるのでオススメしません）
+$commentNum = 200;
+
+//サムネイルを表示するか（0=しない、1=する）※アップファイルの1枚目が画像の場合のみ有効
+$dspThumbNail = 1;
+
+//表示するカテゴリを指定（指定なし（空）の場合は全件表示 ※デフォルト）
+//このページで特定カテゴリのみ表示したい場合、0からの番号を指定下さい。 （1番目が0，2番目が1になるので注意）
+//要するに複数のカテゴリがある場合でそれぞれ別々のファイルで表示したい場合用です
+//このファイルを複製すればOKです（カテゴリごとにデザインを変えたい場合など）
+//例　$category = '1'; ※この場合カテゴリ番号「1」（設定ファイルでの2番目）の記事のみが表示されます
+$category = '';
+//またはURLのパラメータでも指定可能です。番号ルールは↑と同じです。例 news.php?cat=0 や news.php?cat=1 とするだけです
+//1ファイルでパラメータを変えるだけでそれぞれのカテゴリを表示できるので便利です。（全カテゴリでデザインは共通で良い場合）
+$pagelength = 8;
+
+//----------------------------------------------------------------------
+// 設定ファイルの読み込みとページ独自設定
+//----------------------------------------------------------------------
+$getFormatDataArr = getLines2DspData($file_path,$img_updir,$config,'',$category);//（変更不可）
+$pagerRes = pager_dsp($getFormatDataArr,$pagelength,$pagerDispLength,$config['encodingType']);//ページャー生成（変更不可）
+$pagerDsp = (count($getFormatDataArr) > $pagelength) ? '<p class="pager">'.$pagerRes['dsp'].'</p>' : '';//ページャー用タグセット（変更不可）
+
+//▲▲ コピペここまで ▲▲（この行も含む）?>
 <!doctype html>
 <html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone=no">
-    <title>プライバシーポリシー | 厨房サービス</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/fav-ico.png" type="image/x-icon" />
-    <!-- End favicon -->
-    <!-- Css reset -->
-    <link rel="stylesheet" type="text/css" href="./css/nomalize.css">
-    <link rel="stylesheet" type="text/css" href="./css/library.css">
-    <link rel="stylesheet" type="text/css" href="./css/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="./css/slick.css">
-    <link rel="stylesheet" type="text/css" href="./css/aos.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/reponsive.css">
-    <!-- End css reset -->
-
-</head>
-
-<body>
-    <!-- Header -->
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="format-detection" content="telephone=no">
+      <title>新着情報 | 厨房サービス</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="./img/fav-ico.png" type="image/x-icon" />
+      <!-- End favicon -->
+      <!-- Css reset -->
+      <link rel="stylesheet" type="text/css" href="./css/nomalize.css">
+      <link rel="stylesheet" type="text/css" href="./css/library.css">
+      <link rel="stylesheet" type="text/css" href="./css/slick-theme.css">
+      <link rel="stylesheet" type="text/css" href="./css/slick.css">
+      <link rel="stylesheet" type="text/css" href="./css/aos.css">
+      <link rel="stylesheet" type="text/css" href="./css/style.css">
+      <link rel="stylesheet" type="text/css" href="./css/reponsive.css">
+      <!-- End css reset -->
+    
+   </head>
+   <body>
+     <!-- Header -->
     <header>
         <div class="hd_all">
             <div class="hd_logo">
@@ -103,7 +141,7 @@
                                 <li><a href="./interview.html">先輩メッセージ</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="./contact.html">お問い合わせ</a>
                         </li>
                     </ul>
@@ -122,10 +160,10 @@
                 <div class="banner_content">
                     <h3 class="title_style01 cl02">
                         <span class="title01">
-                            Privacy Policy
+                           NEWS
                         </span>
                         <span class="title02">
-                            プライバシーポリシー
+                           新着情報
                         </span>
                     </h3>
                     <div class="img">
@@ -136,39 +174,34 @@
         </div>
     </section>
     <!-- End #page_banner -->
-
-    <section id="privacy_content01">
-        <div class="cont">
-            <div class="txt">
-                <p class="txt01">株式会社厨房サービス（以下「当社」）は、以下のとおり個人情報保護方針を定め、個人情報保護の仕組みを構築し、全従業員に個人情報保護の重要性の認識と取組みを徹底させることにより、個人情報の保護を推進致します。</p>
-                <strong>個人情報の管理</strong>
-                <p>当社は、お客さまの個人情報を正確かつ最新の状態に保ち、個人情報への不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、セキュリティシステムの維持・管理体制の整備・社員教育の徹底等の必要な措置を講じ、安全対策を実施し個人情報の厳重な管理を行ないます。</p>
-                <strong>個人情報の利用目的</strong>
-                <p>お客さまからお預かりした個人情報は、当社からのご連絡や業務のご案内やご質問に対する回答として、電子メールや資料のご送付に利用いたします。</p>
-                <strong>個人情報の第三者への開示・提供の禁止</strong>
-                <p>当社は、お客さまよりお預かりした個人情報を適切に管理し、次のいずれかに該当する場合を除き、個人情報を第三者に開示いたしません。</p>
-                <p class="p_ul">お客さまの同意がある場合<br>
-                お客さまが希望されるサービスを行なうために当社が業務を委託する業者に対して開示する場合<br>
-                法令に基づき開示することが必要である場合</p>
-                <strong>個人情報の安全対策</strong>
-                <p>当社は、個人情報の正確性及び安全性確保のために、セキュリティに万全の対策を講じています。</p>
-                <strong>ご本人の照会</strong>
-                <p class="p_bot0">お客さまがご本人の個人情報の照会・修正・削除などをご希望される場合には、ご本人であることを確認の上、対応させていただきます。<br>
-                法令、規範の遵守と見直し</p>
-                <p>当社は、保有する個人情報に関して適用される日本の法令、その他規範を遵守するとともに、本ポリシーの内容を適宜見直し、その改善に努めます。</p>
-                <strong>お問い合せ</strong>
-                <p class="p_bot0">当社の個人情報の取扱に関するお問い合せは下記までご連絡ください。<br><br></p>
-                <p class="p_bot0">株式会社厨房サービス</p>
-                <p class="p_bot0">〒478-0053愛知県知多市清水が丘１丁目1407番地</p>
-                <p class="p_bot0">TEL:<a href="tel:0562575400" class="link">0562-57-5400</a> FAX:0562-57-5400</p>
+        <section id="newsList">
+         <div class="cont">
+            <div class="bg-lend-top"></div>
+                <div class="hoNewsRows dl-flex ow">
+                    <?php if(!$copyright){echo $warningMesse;exit;}else{for($i = $pagerRes['index']; ($i-$pagerRes['index']) < $pagelength; $i++){if(!empty($getFormatDataArr[$i])){$data=$getFormatDataArr[$i];?>
+                        <div class="hoNItem" id="postID_<?php echo $data['id'];?>">
+                            <?php if(dspThumb($data)) : ?>
+                                <span class="hoNImg" style="background-image: url(<?php echo (dspThumb($data)) ? dspThumb($data,100) : '　';?>);"></span>
+                            <?php else : ?>
+                                <span class="hoNImg" style="background-image: url(./img/ho-img01.jpg);"></span>
+                            <?php endif; ?>
+                            <ul>
+                                <li><?php echo $data['up_ymd']; ?></li>
+                                <li><a href="news-list.php?cat=<?php echo $data['categoryNum'];?>" class="hoCat cl0<?php echo $data['categoryNum'];?>"><?php echo $data['category'];?></a></li>
+                            </ul>
+                            <h3><?php echo $data['title'];//タイトル表示?></h3>
+                        </div>
+                    <?php } } ?>
+                </div>
+                <?php echo $pagerDsp;//ページャー表示?>
+     
+            <?php }//著作権表記削除不可?>
             </div>
-        </div>
-    </section>
-    <!-- End #recruit_content01 -->
-
+        </section>
+        <!-- End #sec_spe02 -->
     <!-- End content -->
 
-    <!-- Footer -->
+      <!-- Footer -->
     <footer>
         <div class="div_backtop"></div>
         <div class="ft_all">
@@ -243,5 +276,4 @@
     <script src="./js/script_page.js"></script>
     <script src="./js/check_browser.js"></script>
 </body>
-
 </html>
